@@ -1,0 +1,9 @@
+name: MultiServerPortals
+version: 1.0
+main: com.example.multiserverportals.MultiServerPortals
+description: A plugin to move players between servers using portals.
+author: YourName
+commands:
+  move:
+    description: Move to a specified server.
+    usage: /move <server name>
