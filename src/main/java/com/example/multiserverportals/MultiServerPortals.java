@@ -1,36 +1,43 @@
 package com.example.multiserverportals;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
 
-    private static MultiServerPortals instance;
-
-    public static MultiServerPortals getInstance() {
-        return instance;
-    }
-
     @Override
     public void onEnable() {
-        instance = this;
+        // プラグインの有効化時の処理
         getLogger().info("MultiServerPortals has been enabled.");
-
         // コマンドの登録
         getCommand("move").setExecutor(this);
+        getCommand("sp").setExecutor(this);
+        getCommand("cos").setExecutor(this);
     }
 
     @Override
     public void onDisable() {
+        // プラグインの無効化時の処理
         getLogger().info("MultiServerPortals has been disabled.");
-        // クリーンアップや後片付けが必要な場合はここで行う
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // コマンド実行時の処理
+        if (command.getName().equalsIgnoreCase("move")) {
+            return handleMoveCommand(sender, args);
+        } else if (command.getName().equalsIgnoreCase("sp")) {
+            return handleSpCommand(sender, args);
+        } else if (command.getName().equalsIgnoreCase("cos")) {
+            return handleCosCommand(sender, args);
+        }
+        return false;
+    }
+
+    private boolean handleMoveCommand(CommandSender sender, String[] args) {
+        // /move コマンドの処理
         if (!(sender instanceof Player)) {
             sender.sendMessage("Only players can execute this command.");
             return true;
@@ -38,32 +45,27 @@ public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        // /move コマンドの処理
-        if (command.getName().equalsIgnoreCase("move")) {
-            if (args.length < 1) {
-                player.sendMessage("Usage: /move <server name>");
-                return true;
-            }
-
-            String serverName = args[0];
-
-            // プレイヤーを指定されたサーバーに移動する
-            movePlayerToServer(player, serverName);
-
-            player.sendMessage("You are being moved to server: " + serverName);
+        if (args.length < 1) {
+            player.sendMessage("Usage: /move <server name>");
             return true;
         }
 
-        return false;
+        String serverName = args[0];
+
+        // プレイヤーを指定したサーバーに移動する処理を実装する
+
+        return true;
     }
 
-    private void movePlayerToServer(Player player, String serverName) {
-        // BungeeCordを使用してプレイヤーを他のサーバーに移動する
-        // BungeeCordでは、プレイヤーを別のサーバーに移動させるためにプラグインメッセージを使用する
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF("Connect");
-        out.writeUTF(serverName);
+    private boolean handleSpCommand(CommandSender sender, String[] args) {
+        // /sp コマンドの処理
+        // サーバー名、オプション、値を取得して設定を変更する処理を実装する
+        return true;
+    }
 
-        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+    private boolean handleCosCommand(CommandSender sender, String[] args) {
+        // /cos コマンドの処理
+        // 新しいサーバーを登録する処理を実装する
+        return true;
     }
 }
