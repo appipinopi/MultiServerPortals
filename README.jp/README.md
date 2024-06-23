@@ -1,8 +1,51 @@
+# MultiServerPortals
+MultiServerPortalsは、プレイヤーがポータルを使ってサーバー間を移動できるようにするMinecraftのプラグインです。このプラグインはBungeeCordを使用してシームレスなサーバー間移動を実現します。
 
+## 機能
+- `/move` コマンドを使用して指定されたサーバーにプレイヤーを移動します。
+- `/sp` コマンドを使用して特定のサーバーのアイテム、XP、防具、エンダーチェストの転送オプションを有効または無効にします。
+- `/savarproperties` コマンドは `/sp` の別名です。
+- `/cos` コマンドを使用して新しいサーバーを登録します。
+- `/connectingservers` コマンドは `/cos` の別名です。
+- シンプルで直感的なコマンドの使用法。
+
+## 要件
+- Bukkit/Spigotで動作するMinecraftサーバー。
+- BungeeCordがサーバーネットワークで正しく設定されていること。
+
+## インストール
+1. MultiServerPortalsプラグインの最新バージョンをダウンロードします。
+2. ダウンロードした `MultiServerPortals.jar` ファイルをBukkit/Spigotサーバーの `plugins` ディレクトリに配置します。
+3. サーバーを再起動してプラグインをロードします。
+
+## 使用方法
+指定されたサーバーにプレイヤーを移動するには、次のコマンドを使用します：
+/move <server name> <username>
+
+### 例
+`survival` サーバーにプレイヤーを移動するには、次のコマンドを使用します：
+/move survival
+このコマンドは、プレイヤーを `survival` という名前のサーバーに移動します。
+
+### 転送オプション
+特定のサーバーのアイテム、XP、防具、エンダーチェストの内容の転送を有効または無効にするには、次のコマンドを使用します：
+/sp <server name> <i|item> <true|false>
+
+### 例
+/sp survival i true`survival`： サーバーの転送を有効にする
+/sp survival item true`survival`： サーバーの転送を有効にする
+/sp survival i false`survival` ：サーバーの転送を無効にする
+/sp survival item false:`survival` ：サーバーの転送を無効にする
+
+### サーバーの登録
+/cos <IP address> <port> <server name>:新しいサーバーを登録するには、次のコマンドを使用します：
+
+### 例
+IPが `127.0.0.1` でポートが `25565` で、名前が `newServer` のサーバーを登録するには、次のコマンドを使用します：
+/cos 127.0.0.1 25565 newServer
 このコマンドにより、`newServer` という名前のサーバーが登録され、 `/move` コマンドを使用してプレイヤーを移動させることができるようになります。
 
 ## コマンド一覧
-
 - `/move <server name> <username>`: 指定されたサーバーにプレイヤーを移動します。
 - `/sp <server name> <i|item> <true|false>`: 特定のサーバーのアイテム、XP、防具、エンダーチェストの転送オプションを設定します。
 - `/savarproperties <server name> <i|item> <true|false>`: `/sp` の別名です。
@@ -10,11 +53,9 @@
 - `/connectingservers <IP address> <port> <server name>`: `/cos` の別名です。
 
 ## ライセンス
-
 このプロジェクトはMITライセンスのもとで公開されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
 
 ## 連絡先
-
 質問やサポートが必要な場合は、GitHubリポジトリでissueを開くか、作者に連絡してください。
 
 作者: appipinopi
