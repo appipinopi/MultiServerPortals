@@ -10,9 +10,8 @@ public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
 
     @Override
     public void onEnable() {
-        // プラグインが有効になったときの処理
         getLogger().info("MultiServerPortals has been enabled!");
-        
+
         // コマンドの登録
         getCommand("move").setExecutor(this);
         getCommand("sp").setExecutor(this);
@@ -23,7 +22,6 @@ public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
 
     @Override
     public void onDisable() {
-        // プラグインが無効になったときの処理
         getLogger().info("MultiServerPortals has been disabled!");
     }
 
@@ -44,7 +42,7 @@ public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
             String serverName = args[0];
             String username = args[1];
 
-            // TODO: 指定されたサーバーにプレイヤーを移動する処理を実装する
+            // TODO: サーバー間移動の処理を実装する
 
             player.sendMessage("プレイヤーを " + serverName + " に移動しました。");
             return true;
@@ -74,7 +72,7 @@ public class MultiServerPortals extends JavaPlugin implements CommandExecutor {
             int port = Integer.parseInt(args[1]);
             String serverName = args[2];
 
-            // TODO: 新しいサーバーを登録する処理を実装する
+            // TODO: 新しいサーバーの登録処理を実装する
 
             player.sendMessage("新しいサーバー " + serverName + " を登録しました。");
             return true;
