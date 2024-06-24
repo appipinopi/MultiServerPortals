@@ -4,9 +4,9 @@ import com.example.multiserverportals.MultiServerPortals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class CosCommandHandler extends CommandProcessor {
+public class SpCommandHandler extends CommandProcessor {
 
-    public CosCommandHandler(MultiServerPortals plugin) {
+    public SpCommandHandler(MultiServerPortals plugin) {
         super(plugin);
     }
 
@@ -16,15 +16,20 @@ public class CosCommandHandler extends CommandProcessor {
             return false;
         }
 
-        String ipAddress = args[0];
-        int port = Integer.parseInt(args[1]);
-        String serverName = args[2];
+        String serverName = args[0];
+        String option = args[1];
+        boolean enable = Boolean.parseBoolean(args[2]);
 
-        // 新しいサーバーを登録するロジックをここに記述
-        sender.sendMessage(plugin.getConfig().getString("default-settings.cos-register-message")
-                .replace("%ip%", ipAddress)
-                .replace("%port%", String.valueOf(port))
-                .replace("%server%", serverName));
+        // 転送オプションの有効/無効ロジックをここに記述
+        String key = "transfer-options." + serverName + "." + option;
+        plugin.getConfig().set(key, enable);
+        plugin.saveConfig();
+
+        String messageKey = enable ? "default-settings.sp-enable-message" : "default-settings.sp-disable-message";
+        sender.sendMessage(plugin.getConfig().getString(messageKey)
+                .replace("%option%", option)
+                .replace("%from%", serverName)
+                .replace("%to%", serverName));
         return true;
     }
 }
