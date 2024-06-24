@@ -2,15 +2,13 @@ package com.example.multiserverportals.command;
 
 import com.example.multiserverportals.MultiServerPortals;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class MoveCommandHandler implements CommandExecutor {
-    private final MultiServerPortals plugin;
+public class MoveCommandHandler extends CommandProcessor {
 
     public MoveCommandHandler(MultiServerPortals plugin) {
-        this.plugin = plugin;
+        super(plugin);
     }
 
     @Override
