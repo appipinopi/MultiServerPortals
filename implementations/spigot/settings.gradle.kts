@@ -1,3 +1,1 @@
-rootProject.name = "MultiServerPortals"
-
-include("spigot")
+rootProject.name = "MultiServerPortals-Spigot"
