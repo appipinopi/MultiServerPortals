@@ -2,31 +2,32 @@ package com.example.multiserverportals.command;
 
 import com.example.multiserverportals.MultiServerPortals;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class CosCommandHandler implements CommandExecutor {
-    private final MultiServerPortals plugin;
+public class CosCommandHandler extends CommandProcessor {
 
     public CosCommandHandler(MultiServerPortals plugin) {
-        this.plugin = plugin;
+        super(plugin);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 3) {
+        if (args.length < 4) {
             return false;
         }
 
-        String ipAddress = args[0];
-        int port = Integer.parseInt(args[1]);
+        String ip = args[0];
+        String port = args[1];
         String serverName = args[2];
+        String roadName = args[3];
 
-        // 新しいサーバーを登録するロジックをここに記述
-        sender.sendMessage(plugin.getConfig().getString("default-settings.cos-register-message")
-                .replace("%ip%", ipAddress)
-                .replace("%port%", String.valueOf(port))
-                .replace("%server%", serverName));
+        // サーバー登録ロジックをここに記述
+        String message = plugin.getConfig().getString("default-settings.cos-register-message")
+                .replace("%server%", serverName)
+                .replace("%ip%", ip)
+                .replace("%port%", port)
+                .replace("%road%", roadName);
+        sender.sendMessage(message);
         return true;
     }
 }
