@@ -19,17 +19,24 @@ public class WhitelistCommandHandler extends CommandProcessor {
 
         String roadName = args[0];
         String playerName = args[1];
-        boolean allow = Boolean.parseBoolean(args[2]);
+        boolean enable = Boolean.parseBoolean(args[2]);
 
-        // ホワイトリストのロジックをここに記述
+        Player player = plugin.getServer().getPlayer(playerName);
+
+        if (player == null) {
+            sender.sendMessage("Player not found.");
+            return true;
+        }
+
+        // ホワイトリストの有効/無効ロジックをここに記述
         String key = "whitelist." + roadName + "." + playerName;
-        plugin.getConfig().set(key, allow);
+        plugin.getConfig().set(key, enable);
         plugin.saveConfig();
 
-        String messageKey = allow ? "default-settings.whitelist-add-message" : "default-settings.whitelist-remove-message";
+        String messageKey = enable ? "default-settings.whitelist-enable-message" : "default-settings.whitelist-disable-message";
         sender.sendMessage(plugin.getConfig().getString(messageKey)
-                .replace("%road%", roadName)
-                .replace("%player%", playerName));
+                .replace("%player%", playerName)
+                .replace("%road%", roadName));
         return true;
     }
 }
