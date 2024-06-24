@@ -1,16 +1,19 @@
-default-settings:
-  cos-register-message: "Server %server% registered with IP %ip% and port %port% for road %road%."
-  move-message: "Player %player% moved to server %server%."
-  sp-enable-message: "Transfer option %option% enabled for server %from%."
-  sp-disable-message: "Transfer option %option% disabled for server %from%."
-  whitelist-enable-message: "Player %player% is now whitelisted for road %road%."
-  whitelist-disable-message: "Player %player% is no longer whitelisted for road %road%."
-transfer-options:
-  # Example:
-  # myServer:
-  #   item: true
-  #   xp: false
-whitelist:
-  # Example:
-  # roadName:
-  #   playerName: true
+name: MultiServerPortals
+main: com.example.multiserverportals.PaperMain
+version: 1.0.0
+api-version: 1.16
+commands:
+  move:
+    description: "Move a player to a specified server"
+  sp:
+    description: "Enable or disable specific transfer options for a server"
+  cos:
+    description: "Register a new server"
+  wh:
+    description: "Manage whitelist for roads"
+  whitelist:
+    description: "Manage whitelist for roads"
+  savarproperties:
+    description: "Alias for /sp command"
+  connectingservers:
+    description: "Alias for /cos command"
