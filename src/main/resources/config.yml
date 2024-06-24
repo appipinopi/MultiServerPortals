@@ -1,41 +1,16 @@
-# MultiServerPortals Configuration
-
-# デフォルトの設定値
 default-settings:
-  move-message: '&a%player% がサーバー %server% に移動しました。'
-  sp-enable-message: '&a%from% から %to% への %option% の転送が有効になりました。'
-  sp-disable-message: '&c%from% から %to% への %option% の転送が無効になりました。'
-  cos-register-message: '&a新しいサーバー %server% が IP %ip% とポート %port% で登録されました。'
-
-# コマンド関連の設定
-commands:
-  move:
-    usage: '/move <server name> <username>'
-    description: '指定されたサーバーにプレイヤーを移動します。'
-  sp:
-    usage: '/sp <server name> <option> <true|false>'
-    description: '特定のサーバーの %option% の転送オプションを有効または無効にします。'
-  savarproperties:
-    aliases:
-      - '/sp'
-    usage: '/savarproperties <server name> <option> <true|false>'
-    description: '/sp コマンドの別名です。'
-  cos:
-    usage: '/cos <IP address> <port> <server name>'
-    description: '新しいサーバーを登録します。'
-  connectingservers:
-    aliases:
-      - '/cos'
-    usage: '/connectingservers <IP address> <port> <server name>'
-    description: '/cos コマンドの別名です。'
-
-# ライセンス関連の設定
-license:
-  type: 'MIT'
-  details: 'このプロジェクトは MIT ライセンスのもとで公開されています。詳細は LICENSE ファイルを参照してください。'
-
-# 連絡先関連の設定
-contact:
-  author: 'appipinopi'
-  github: 'https://github.com/appipinopi/MultiServerPortals'
-  issues: 'https://github.com/appipinopi/MultiServerPortals/issues'
+  cos-register-message: "Server %server% registered with IP %ip% and port %port% for road %road%."
+  move-message: "Player %player% moved to server %server%."
+  sp-enable-message: "Transfer option %option% enabled for server %from%."
+  sp-disable-message: "Transfer option %option% disabled for server %from%."
+  whitelist-enable-message: "Player %player% is now whitelisted for road %road%."
+  whitelist-disable-message: "Player %player% is no longer whitelisted for road %road%."
+transfer-options:
+  # Example:
+  # myServer:
+  #   item: true
+  #   xp: false
+whitelist:
+  # Example:
+  # roadName:
+  #   playerName: true
