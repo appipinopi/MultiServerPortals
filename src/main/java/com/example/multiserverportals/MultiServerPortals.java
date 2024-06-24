@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.example.multiserverportals.command.CosCommandHandler;
 import com.example.multiserverportals.command.MoveCommandHandler;
 import com.example.multiserverportals.command.SpCommandHandler;
+import com.example.multiserverportals.command.WhitelistCommandHandler;
 
 public class MultiServerPortals extends JavaPlugin {
 
@@ -15,6 +16,7 @@ public class MultiServerPortals extends JavaPlugin {
         getCommand("move").setExecutor(new MoveCommandHandler(this));
         getCommand("sp").setExecutor(new SpCommandHandler(this));
         getCommand("cos").setExecutor(new CosCommandHandler(this));
+        getCommand("whitelist").setExecutor(new WhitelistCommandHandler(this));
         getCommand("savarproperties").setExecutor(new SpCommandHandler(this)); // Alias for /sp
         getCommand("connectingservers").setExecutor(new CosCommandHandler(this)); // Alias for /cos
     }
