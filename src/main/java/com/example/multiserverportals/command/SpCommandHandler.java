@@ -4,29 +4,27 @@ import com.example.multiserverportals.MultiServerPortals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class SpCommandHandler extends CommandProcessor {
+public class CosCommandHandler extends CommandProcessor {
 
-    public SpCommandHandler(MultiServerPortals plugin) {
+    public CosCommandHandler(MultiServerPortals plugin) {
         super(plugin);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 4) {
+        if (args.length < 3) {
             return false;
         }
 
-        String serverNameFrom = args[0];
-        String serverNameTo = args[1];
-        String option = args[2];
-        boolean enable = Boolean.parseBoolean(args[3]);
+        String ipAddress = args[0];
+        int port = Integer.parseInt(args[1]);
+        String serverName = args[2];
 
-        // 特定のサーバーのオプションの転送を有効または無効にするロジックをここに記述
-        String messageKey = enable ? "default-settings.sp-enable-message" : "default-settings.sp-disable-message";
-        sender.sendMessage(plugin.getConfig().getString(messageKey)
-                .replace("%from%", serverNameFrom)
-                .replace("%to%", serverNameTo)
-                .replace("%option%", option));
+        // 新しいサーバーを登録するロジックをここに記述
+        sender.sendMessage(plugin.getConfig().getString("default-settings.cos-register-message")
+                .replace("%ip%", ipAddress)
+                .replace("%port%", String.valueOf(port))
+                .replace("%server%", serverName));
         return true;
     }
 }
