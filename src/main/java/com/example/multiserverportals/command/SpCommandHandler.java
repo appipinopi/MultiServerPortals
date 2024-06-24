@@ -2,28 +2,33 @@ package com.example.multiserverportals.command;
 
 import com.example.multiserverportals.MultiServerPortals;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class SpCommandHandler extends CommandProcessor {
+public class SpCommandHandler implements CommandExecutor {
+    private final MultiServerPortals plugin;
 
     public SpCommandHandler(MultiServerPortals plugin) {
-        super(plugin);
+        this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 3) {
-            sender.sendMessage("Usage: /sp <server name> <i|item|x|xp|ar|armor|e|enderchest|g|go|w|whitelist> <true|false>");
+        if (args.length < 4) {
             return false;
         }
 
-        String serverName = args[0];
-        String option = args[1];
-        boolean enabled = Boolean.parseBoolean(args[2]);
-        
-        // Logic to enable/disable specific options on the server
-        sender.sendMessage("Setting " + option + " on server " + serverName + " to " + enabled);
+        String serverNameFrom = args[0];
+        String serverNameTo = args[1];
+        String option = args[2];
+        boolean enable = Boolean.parseBoolean(args[3]);
 
+        // 特定のサーバーのオプションの転送を有効または無効にするロジックをここに記述
+        String messageKey = enable ? "default-settings.sp-enable-message" : "default-settings.sp-disable-message";
+        sender.sendMessage(plugin.getConfig().getString(messageKey)
+                .replace("%from%", serverNameFrom)
+                .replace("%to%", serverNameTo)
+                .replace("%option%", option));
         return true;
     }
 }
