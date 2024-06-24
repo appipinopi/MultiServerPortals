@@ -1,0 +1,23 @@
+name: MultiServerPortals
+main: com.example.multiserverportals.MultiServerPortals
+version: 1.0.0
+api-version: 1.13
+commands:
+  move:
+    description: Move a player to the specified server
+    usage: /move <server name> <username>
+    permission: multiserverportals.move
+  sp:
+    description: Enable or disable transfer options for a specific server
+    usage: /sp <server name> <i|item|x|xp|ar|armor|e|enderchest|g|go|w|whitelist> <true|false>
+    permission: multiserverportals.sp
+    aliases: [savarproperties]
+  cos:
+    description: Register a new server
+    usage: /cos <IP address> <port> <server name> <road name>
+    permission: multiserverportals.cos
+  connectingservers:
+    description: Alias for /cos
+    usage: /connectingservers <IP address> <port> <server name> <road name>
+    permission: multiserverportals.connectingservers
+    aliases: [cos]
