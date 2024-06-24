@@ -13,22 +13,24 @@ public class MoveCommandHandler extends CommandProcessor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("This command can only be run by a player.");
-            return true;
-        }
-
         if (args.length < 2) {
             return false;
         }
 
         String serverName = args[0];
         String playerName = args[1];
+        Player player = plugin.getServer().getPlayer(playerName);
 
-        // プレイヤーを指定されたサーバーに移動するロジックをここに記述
-        sender.sendMessage(plugin.getConfig().getString("default-settings.move-message")
-                .replace("%player%", playerName)
-                .replace("%server%", serverName));
+        if (player == null) {
+            sender.sendMessage("Player not found.");
+            return true;
+        }
+
+        // プレイヤー移動ロジックをここに記述
+        String message = plugin.getConfig().getString("default-settings.move-message")
+                .replace("%server%", serverName)
+                .replace("%player%", playerName);
+        sender.sendMessage(message);
         return true;
     }
 }
