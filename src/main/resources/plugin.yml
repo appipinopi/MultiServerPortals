@@ -1,22 +1,19 @@
 name: MultiServerPortals
-version: 1.0
-main: com.example.multiserverportals.MultiServerPortals
+main: com.example.multiserverportals.PaperMain
+version: 1.0.0
 api-version: 1.16
 commands:
   move:
-    description: "指定されたサーバーにプレイヤーを移動します"
-    usage: "/move <server name> <username>"
+    description: "Move a player to a specified server"
   sp:
-    description: "特定のサーバーのアイテム、XP、防具、エンダーチェスト、ホワイトリストの転送オプションを有効または無効にします"
-    usage: "/sp <server name> <option> <true|false>"
-  savarproperties:
-    description: "/sp の別名です"
-    usage: "/savarproperties <server name> <option> <true|false>"
-    aliases: [sp]
+    description: "Enable or disable specific transfer options for a server"
   cos:
-    description: "新しいサーバーを登録します"
-    usage: "/cos <IP address> <port> <server name>"
+    description: "Register a new server"
+  wh:
+    description: "Manage whitelist for roads"
+  whitelist:
+    description: "Manage whitelist for roads"
+  savarproperties:
+    description: "Alias for /sp command"
   connectingservers:
-    description: "/cos の別名です"
-    usage: "/connectingservers <IP address> <port> <server name>"
-    aliases: [cos]
+    description: "Alias for /cos command"
