@@ -1,21 +1,22 @@
 name: MultiServerPortals
 version: 1.0
 main: com.example.multiserverportals.MultiServerPortals
-description: A plugin to move players between servers using portals.
-author: YourName
+api-version: 1.17
+author: appipinopi
+description: MultiServerPortals plugin allows players to teleport between servers using portals.
 commands:
   move:
-    description: Move to a specified server.
+    description: Teleports the player to the specified server.
     usage: /move <server name> <username>
   sp:
-    description: Set transfer options for a specified server.
-    usage: /sp <server name> <i|item> <true|false>
+    description: Enable or disable transfer of items, XP, armor, or ender chest contents.
+    usage: /sp <server name> <i|item|x|xp|ar|armor|e|enderchest|g|go> <true|false>
   savarproperties:
-    description: Set transfer options for a specified server. (Alias of /sp)
-    usage: /savarproperties <server name> <i|item> <true|false>
+    description: Alias for /sp command.
+    usage: /savarproperties <server name> <i|item|x|xp|ar|armor|e|enderchest|g|go> <true|false>
   cos:
-    description: Register a new server.
+    description: Registers a new server.
     usage: /cos <IP address> <port> <server name>
   connectingservers:
-    description: Register a new server. (Alias of /cos)
+    description: Alias for /cos command.
     usage: /connectingservers <IP address> <port> <server name>
