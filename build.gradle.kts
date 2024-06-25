@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    java
+    `java-library`
 }
 
 group = "com.example"
@@ -7,24 +8,21 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
+    implementation("org.bukkit:bukkit:1.16.5-R0.1-SNAPSHOT")
+    implementation("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
+tasks.test {
+    useJUnitPlatform()
 }
 
-tasks.register<Copy>("copyPluginYml") {
-    from("src/main/resources")
-    include("plugin.yml")
-    into("$buildDir/classes/java/main")
-}
-
-tasks.build {
-    dependsOn("copyPluginYml")
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
 }
