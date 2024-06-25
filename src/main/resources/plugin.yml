@@ -1,22 +1,25 @@
 name: MultiServerPortals
-main: com.example.multiserverportals.PaperMain
 version: 1.0.0
+main: com.example.multiserverportals.MultiServerPortals
 api-version: 1.16
 commands:
   move:
-    description: Move player to specified server
+    description: Move a player to the specified server
+    usage: /move <server> <player>
   sp:
     description: Set server properties
+    usage: /sp <server> <property> <true|false>
   cos:
     description: Register a new server
+    usage: /cos <ip> <port> <server name>
+  whitelist:
+    description: Manage whitelist for roads
+    usage: /whitelist <road> <player> <true|false>
   savarproperties:
     description: Alias for /sp
+    usage: /savarproperties <server> <property> <true|false>
     aliases: [sp]
   connectingservers:
     description: Alias for /cos
+    usage: /connectingservers <ip> <port> <server name>
     aliases: [cos]
-  wh:
-    description: Whitelist a player for a specific road
-  whitelist:
-    description: Alias for /wh
-    aliases: [wh]
