@@ -1,19 +1,22 @@
 name: MultiServerPortals
-main: com.example.multiserverportals.MultiServerPortals
+main: com.example.multiserverportals.PaperMain
 version: 1.0.0
 api-version: 1.16
 commands:
   move:
-    description: Move a player to a specified server.
+    description: Move player to specified server
   sp:
-    description: Enable or disable transfer options for items, XP, armor, ender chest, and whitelist for a specific server.
+    description: Set server properties
   cos:
-    description: Register a new server.
-  connectingservers:
-    description: Alias for /cos.
+    description: Register a new server
   savarproperties:
-    description: Alias for /sp.
+    description: Alias for /sp
+    aliases: [sp]
+  connectingservers:
+    description: Alias for /cos
+    aliases: [cos]
   wh:
-    description: Alias for /whitelist.
+    description: Whitelist a player for a specific road
   whitelist:
-    description: Enable or disable whitelist for a specific road and player.
+    description: Alias for /wh
+    aliases: [wh]
