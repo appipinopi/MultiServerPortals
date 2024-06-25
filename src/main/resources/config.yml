@@ -1,7 +1,4 @@
-default:
-  whitelist: false
-  items: true
-  xp: true
-  armor: true
-  enderchest: true
-  go: true
+# Default configuration for MultiServerPortals
+whitelist:
+  enabled: false
+  roads: {}
